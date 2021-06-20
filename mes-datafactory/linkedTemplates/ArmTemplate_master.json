@@ -1,0 +1,194 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "mes-datafactory"
+		},
+		"CloudSQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CloudSQL'"
+		},
+		"JsonBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'JsonBlob'"
+		},
+		"LocalSQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LocalSQL'"
+		},
+		"OnPremFile_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'OnPremFile'"
+		},
+		"SrcFile_Trigger_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SrcFile_Trigger'"
+		},
+		"SrcLookupFile_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SrcLookupFile'"
+		},
+		"Src_Blob_Input_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Src_Blob_Input'"
+		},
+		"Src_CloudExcelBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Src_CloudExcelBlob'"
+		},
+		"Src_Employee_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Src_Employee'"
+		},
+		"Target_Cosmos_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Target_Cosmos'"
+		},
+		"src_blob_csv_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'src_blob_csv'"
+		},
+		"tar_container_csv_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'tar_container_csv'"
+		},
+		"OnPremFile_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\W10GNYQ8Y2.amer.dell.com\\\\Emp Files"
+		},
+		"OnPremFile_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "kishore"
+		},
+		"File_EventTrigger_properties_FileTrigger_parameters_Filename_pl": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filename"
+		},
+		"File_EventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/4d9c544b-c514-4ef2-9d53-206b02124daa/resourceGroups/MES_BI/providers/Microsoft.Storage/storageAccounts/gen2dellstorage"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "mes-datafactory_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CloudSQL_connectionString": {
+						"value": "[parameters('CloudSQL_connectionString')]"
+					},
+					"JsonBlob_connectionString": {
+						"value": "[parameters('JsonBlob_connectionString')]"
+					},
+					"SrcFile_Trigger_connectionString": {
+						"value": "[parameters('SrcFile_Trigger_connectionString')]"
+					},
+					"SrcLookupFile_connectionString": {
+						"value": "[parameters('SrcLookupFile_connectionString')]"
+					},
+					"Src_Blob_Input_connectionString": {
+						"value": "[parameters('Src_Blob_Input_connectionString')]"
+					},
+					"Src_CloudExcelBlob_connectionString": {
+						"value": "[parameters('Src_CloudExcelBlob_connectionString')]"
+					},
+					"Src_Employee_connectionString": {
+						"value": "[parameters('Src_Employee_connectionString')]"
+					},
+					"Target_Cosmos_connectionString": {
+						"value": "[parameters('Target_Cosmos_connectionString')]"
+					},
+					"src_blob_csv_connectionString": {
+						"value": "[parameters('src_blob_csv_connectionString')]"
+					},
+					"tar_container_csv_connectionString": {
+						"value": "[parameters('tar_container_csv_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "mes-datafactory_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LocalSQL_connectionString": {
+						"value": "[parameters('LocalSQL_connectionString')]"
+					},
+					"OnPremFile_password": {
+						"value": "[parameters('OnPremFile_password')]"
+					},
+					"OnPremFile_properties_typeProperties_host": {
+						"value": "[parameters('OnPremFile_properties_typeProperties_host')]"
+					},
+					"OnPremFile_properties_typeProperties_userId": {
+						"value": "[parameters('OnPremFile_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'mes-datafactory_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "mes-datafactory_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"File_EventTrigger_properties_FileTrigger_parameters_Filename_pl": {
+						"value": "[parameters('File_EventTrigger_properties_FileTrigger_parameters_Filename_pl')]"
+					},
+					"File_EventTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('File_EventTrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'mes-datafactory_ArmTemplate_1')]"
+			]
+		}
+	]
+}

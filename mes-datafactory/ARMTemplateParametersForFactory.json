@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mes-datafactory"
+		},
+		"CloudSQL_connectionString": {
+			"value": ""
+		},
+		"JsonBlob_connectionString": {
+			"value": ""
+		},
+		"LocalSQL_connectionString": {
+			"value": ""
+		},
+		"OnPremFile_password": {
+			"value": ""
+		},
+		"SrcFile_Trigger_connectionString": {
+			"value": ""
+		},
+		"SrcLookupFile_connectionString": {
+			"value": ""
+		},
+		"Src_Blob_Input_connectionString": {
+			"value": ""
+		},
+		"Src_CloudExcelBlob_connectionString": {
+			"value": ""
+		},
+		"Src_Employee_connectionString": {
+			"value": ""
+		},
+		"Target_Cosmos_connectionString": {
+			"value": ""
+		},
+		"src_blob_csv_connectionString": {
+			"value": ""
+		},
+		"tar_container_csv_connectionString": {
+			"value": ""
+		},
+		"OnPremFile_properties_typeProperties_host": {
+			"value": "\\\\W10GNYQ8Y2.amer.dell.com\\\\Emp Files"
+		},
+		"OnPremFile_properties_typeProperties_userId": {
+			"value": "kishore"
+		},
+		"File_EventTrigger_properties_FileTrigger_parameters_Filename_pl": {
+			"value": "@triggerBody().filename"
+		},
+		"File_EventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/4d9c544b-c514-4ef2-9d53-206b02124daa/resourceGroups/MES_BI/providers/Microsoft.Storage/storageAccounts/gen2dellstorage"
+		}
+	}
+}
