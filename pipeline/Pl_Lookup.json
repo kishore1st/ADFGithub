@@ -1,0 +1,62 @@
+{
+	"name": "Pl_Lookup",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('FIlename')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Lookup1",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "@concat('Select count(1) as count from ', item())",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "LocalSQL_VariableDemo",
+									"type": "DatasetReference"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"FIlename": {
+				"type": "Array",
+				"defaultValue": [
+					"LIGHT",
+					"WEATHER",
+					"Calendar"
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-03-11T16:25:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "mes-datafactory",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f231b1ab-e959-47e1-98e2-2d206719b853",
+		"tenantId": "945c199a-83a2-4e80-9f8c-5a91be5752dd"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "LocalSQL_VariableDemo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LocalSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LIGHT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

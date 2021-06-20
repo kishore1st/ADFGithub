@@ -1,0 +1,27 @@
+{
+	"name": "SQL_Light",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LocalSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "LIGHT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LIGHT_CONDITION",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LIGHT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "CloudSQL_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CloudSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

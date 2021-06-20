@@ -1,0 +1,17 @@
+{
+	"name": "LocalSQL",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "My local instance",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=W10GNYQ8Y2;initial catalog=car;user id=sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4OGMyY2IwNS1hN2IzLTQ5NzgtYTAwMy03N2YwYTY1YzJiNWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IRSQLServerkishore",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

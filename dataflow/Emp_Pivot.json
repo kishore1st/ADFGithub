@@ -1,0 +1,32 @@
+{
+	"name": "Emp_Pivot",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Ds_Emp",
+						"type": "DatasetReference"
+					},
+					"name": "Emp"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_8fa",
+						"type": "DatasetReference"
+					},
+					"name": "Sink2Blob"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Salary"
+				}
+			],
+			"script": "source(output(\n\t\tEid as short,\n\t\tEname as string,\n\t\tSalary as integer,\n\t\tDid as short,\n\t\tJoinDt as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false) ~> Emp\nEmp pivot(pivotBy(Did),\n\tSalary = sum(Salary),\n\tcolumnNaming: '$N$V',\n\tlateral: false) ~> Salary\nSalary sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Sink2Blob"
+		}
+	}
+}

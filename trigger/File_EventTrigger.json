@@ -1,0 +1,28 @@
+{
+	"name": "File_EventTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "FileTrigger",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Filename_pl": "@triggerBody().filename"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/trigger/blobs/",
+			"blobPathEndsWith": ".txt",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/4d9c544b-c514-4ef2-9d53-206b02124daa/resourceGroups/MES_BI/providers/Microsoft.Storage/storageAccounts/gen2dellstorage",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

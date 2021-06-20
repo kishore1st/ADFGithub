@@ -1,0 +1,22 @@
+{
+	"name": "TransactionhistoryWithCost",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Src_CloudExcelBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "UIP_Transaction History With Co",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "UIP_Transaction History With Cost Report.xlsx",
+				"container": "input"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

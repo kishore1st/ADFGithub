@@ -1,0 +1,6 @@
+{
+	"name": "IRSQLServerkishore",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
